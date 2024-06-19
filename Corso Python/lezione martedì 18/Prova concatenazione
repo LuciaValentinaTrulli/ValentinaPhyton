@@ -1,0 +1,4 @@
+# stampo stringhe concatenate a variabili
+nome = "Valentina"
+età = 37
+print("Mi chiamo", nome, "e ho", età, "anni")

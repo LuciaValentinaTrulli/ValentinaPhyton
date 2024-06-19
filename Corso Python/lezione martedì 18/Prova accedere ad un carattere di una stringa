@@ -1,0 +1,2 @@
+s = "ciao"
+print(s[0])

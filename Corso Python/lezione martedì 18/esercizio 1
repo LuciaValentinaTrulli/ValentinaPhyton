@@ -1,0 +1,11 @@
+# prendo l'input dell'utente
+numero = int (input("Inserisci un numero:"))
+
+if numero > 10:
+    print("numero maggiore di 10")
+    if numero < 20:
+        print("numero minore di 20")
+        if numero == 15:
+            print("Il numero è 15")
+else:
+    print("numero non valido")    
