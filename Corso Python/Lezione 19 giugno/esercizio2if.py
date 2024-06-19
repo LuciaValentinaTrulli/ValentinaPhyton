@@ -10,7 +10,7 @@ if (nomeUtente == nomeUtenteCorretto and password == passwordCorretta):
     if domandaSegreta == "C":
         colorePreferito = input ("Inserisci il tuo colore preferito:")
     elif domandaSegreta == "A":
-        animalePreferito = input ("Inserisci il tuo colore preferito:")
+        animalePreferito = input ("Inserisci il tuo animale preferito:")
 
 
     scelta = input("Se vuoi modificare il mone utente premi 1, se vuoi modificare la password premi 2, altrimenti premi 0: ")
