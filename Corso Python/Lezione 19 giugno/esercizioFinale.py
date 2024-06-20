@@ -1,24 +1,31 @@
 controllo_ciclo = True
 
-selezione = input("Vuoi avviare il software? Srivi SI o NO")
-lista_prodotti = ["1.tazza", "2.borsa", "3.penna"]
+selezione = input("Vuoi avviare il software? Srivi SI o NO ")
+lista_prodotti = ["tazza", "borsa", "penna"]
 lista_acquisti_utente = []
 
-if selezione == "SI":
+if selezione.lower() == "si":
+
+    #Gestione Clienti
     while controllo_ciclo:
-        selez2 = input("Vuoi vedere i prodotti disponibili?")
+        selez2 = input("Vuoi vedere i prodotti disponibili? Srivi SI o NO ")
         if selez2.lower() =="si":
-            print(lista_prodotti)
-            selez3 = input("Vuoi acquistare un articolo?")
+            for prodotto in lista_prodotti:
+                print(prodotto)
+
+            selez3 = input("Vuoi acquistare un articolo? Srivi SI o NO ")
             if selez3.lower() == "si":
-                selez4 = int(input("Scrivi il numero dell'articolo che vuoi acquistare"))
+                selez4 = input("Scrivi l'articolo che vuoi acquistare: ")
                 lista_acquisti_utente.append(selez4)
+                print("Hai acquistato:")
                 print(lista_acquisti_utente)
-            else:
-                break
+            else: 
+                controllo_ciclo = False
+                
         else:
-            break
-    
+            controllo_ciclo = False
+            
+    #Gestione dell'Inventario
     while controllo_ciclo:
         articolo1 = {
             "nome" : "tazza",
