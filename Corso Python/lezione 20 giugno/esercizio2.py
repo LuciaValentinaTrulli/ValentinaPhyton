@@ -11,25 +11,23 @@ else:
 
 
 #punto 2
-#chiedo all'utente di inserire un numero
-n = int(input("Inserisci un numero intero positivo: "))
+controllo = True
 
-#controllo se positivo
-if n>0:
+while controllo:
+    n = int(input("Inserisci un numero intero positivo: "))
+    
+    #controllo se positivo
+    if n>0:
 
-    range(n, -1, -1)
-
-    #stampo ciclando sugli elementi
-    for i in range():
-        print(i)
-
-    scelta = input("Vuoi ripetere? (Si o no): ")
-    while scelta.lower() == "si":
-        numero_inserito = int(input("Inserisci un numero: "))
-
-        range(n, -1, -1)
-
-        for i in range():
+        #stampo ciclando sugli elementi
+        for i in range(n, -1, -1):
             print(i)
-else:
-    print("Il numero non è positivo")
+
+        scelta = input("Vuoi ripetere? (si o no): ")
+        if scelta.lower() == "no":
+            controllo = False
+    else:
+        print("Il numero non è positivo")
+
+
+
