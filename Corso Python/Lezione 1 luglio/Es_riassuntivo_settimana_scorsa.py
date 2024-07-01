@@ -33,10 +33,10 @@ def scrivi_utenti(dato):
             file.write(dato_b)                                         #o append?
 
 
-
+#chiamo la funzione per ottenere il db utenti
 db_utenti = verifica_db_utenti()
 
-#funzione per creazione di utenti
+#funzione per creazione di utenti da parte di un amministratore
 def crea_utente():
     ruolo = input("Scrivi 1 per inserire un amministratore o 2 per inserire un utente: ")
     ruolo_ok = True
@@ -60,3 +60,29 @@ def crea_utente():
             print("Utente aggiunto")
 
 
+#funzione login
+def login():
+    tipo_utente = input("Inserisci 1 se sei amministratore o 2 se sei utente: ")
+    return tipo_utente
+
+#funzione per definire il menu degli amministratori
+def menu_amministratore():
+    info_menu="""Inserisci 1 per inserire un prodotto\n
+Inserisci 2 per eliminare prodotto\n
+Inserisci 3 per visualizzare i prodotti\n
+Inserisci 4 per aggiungere un utente\n
+Inserisci 5 per eliminare un utente\n
+Inserisci 6 per uscire: """
+    scelta_menu = input(info_menu)
+
+    return scelta_menu
+
+
+#funzione per definire il menu degli utenti
+def menu_utente():
+    info_menu="""Inserisci 1 per visualizzare i prodotti\n
+Inserisci 2 per acquistare un prodotto\n
+Inserisci 3 per uscire: """
+    scelta_menu = input(info_menu)
+
+    return scelta_menu
