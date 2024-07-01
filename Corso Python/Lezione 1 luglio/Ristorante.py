@@ -28,14 +28,23 @@ class Ristorante:                                   #definisco la classe
         print("Il ristorante è chiuso")
     
     def aggiungi_al_menu(self):
-        piatto = input("Inserisci un piatto:")
-        prezzo = input("Inserisci il prezzo: ")
-        self.menu[piatto] = prezzo
+        while True:
+            piatto = input("Inserisci un piatto:")
+            prezzo = input("Inserisci il prezzo: ")
+            self.menu[piatto] = prezzo
+
+            scelta = input("Vuoi inserire un altro piatto? ")
+            if scelta.lower() == "no":
+                break
 
     def togli_dal_menu(self):
-        piatto = input("Inserisci il piatto da eliminare:")
-        self.menu.pop(piatto)
+        while True:
+            piatto = input("Inserisci il piatto da eliminare:")
+            self.menu.pop(piatto)
 
+            scelta = input("Vuoi eliminare un altro piatto? ")
+            if scelta.lower() == "no":
+                break
 
     def stampa_menu(self):
         print("Il menu é: ", self.menu)
@@ -43,7 +52,7 @@ class Ristorante:                                   #definisco la classe
 
 
 
-#reo un oggetto e richiamo  i metodi
+#creo un oggetto e richiamo i metodi
 ristorante1 = Ristorante("Da Gianni", "italiana")
 ristorante1.descrivi_ristorante()
 ristorante1.stato_apertura()
