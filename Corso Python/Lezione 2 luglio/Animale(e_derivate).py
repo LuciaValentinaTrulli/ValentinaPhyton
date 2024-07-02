@@ -4,7 +4,7 @@ class Animale:
         self.nome = nome
         self.età = età
     
-    def fai_suono(self):
+    def fai_suono():
         print("verso animale: ")
 
 
@@ -16,8 +16,8 @@ class Leone(Animale):
        
 
 
-    def fai_suono(self):
-        self.fai_suono()
+    def fai_suono():
+        super().fai_suono()
         print("verso animale: roar")
 
 
