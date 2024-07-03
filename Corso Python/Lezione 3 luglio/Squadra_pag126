@@ -1,0 +1,57 @@
+class MembroSquadra:                                                    #definizione classe base
+        
+    def __init__(self, nome, età):                                      #costruttore della classe base
+        self.nome = nome
+        self.età = età
+
+    def descrivi(self):                                                 #metodo classe base
+            print(f"Il membro della squadra si chiama {self.nome} e ha {self.età} anni")
+
+
+class Giocatore(MembroSquadra):                                         #definizione classe figlia
+      
+    def __init__(self, nome, età, ruolo, numero_maglia):                #costruttore della classe figlia
+        super().__init__(nome, età)
+        self.ruolo = ruolo
+        self.numero_maglia =numero_maglia
+
+    def gioca_partita(self):                                            #metodo della classe figlia
+        if self.ruolo == "centrocampista":                                                   
+            print(f"Il giocatore {self.nome} con numero di maglia {self.numero_maglia} sta effettuando un passaggio")
+        elif self.ruolo == "attacante":
+            print(f"Il giocatore {self.nome} con numero di maglia {self.numero_maglia} sta effettuando un tiro in porta")
+        elif self.ruolo == "difensore":
+            print(f"Il giocatore {self.nome} con numero di maglia {self.numero_maglia} sta ostacolando l'avversario")
+        else:
+            print("Scelta non valida")
+
+
+class Allenatore(MembroSquadra):                                        #seconda classe figlia
+        
+        def __init__(self, nome, età, anni_di_esperienza):
+            super().__init__(nome, età)
+            self.anni_di_esperienza = anni_di_esperienza
+        
+        def dirige_allenamento(self):
+             print(f"L'allenatore {self.nome} fa svolgere un allenamento in più fasi")
+
+
+class Assistente(MembroSquadra):                                        #terza classe figlia
+            
+        def __init__(self, nome, età, specializzazione):
+            super().__init__(nome, età)
+            self.specializzazione = specializzazione
+        
+        def supporta_team(self):
+             print(f"L'assistente {self.nome} supporta il team in veste di {self.specializzazione}")
+
+
+#creo oggetti delle classi figlie e richiamo i rispettivi metodi
+giocatore1 = Giocatore("Ronaldo", "40", "attaccante", "10")
+giocatore1.gioca_partita()
+
+allenatore1 = Allenatore("Mancini", "50", "30")
+allenatore1.dirige_allenamento()
+
+assistente1 = Assistente("Rossi", "35", "fisioterapista")
+assistente1.supporta_team()
