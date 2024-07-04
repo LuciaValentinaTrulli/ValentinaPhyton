@@ -1,4 +1,4 @@
-class Libro:                                    #definisco la classe
+class Libro:                                    #definisco la classe Libro
 
     def __init__ (self, titolo, autore, pagine):        #costruttore
         self.titolo = titolo
@@ -10,19 +10,23 @@ class Libro:                                    #definisco la classe
 
 
 
-class Biblioteca:
-    
+class Biblioteca:                               #definisco la classe Biblioteca
+
+    libri =[]
+
     def crea_libro(self):
-        libri =[]
         iterazioni = int(input("Quanti libri vuoi inserire? "))
         for i in range(0, iterazioni):
             titolo = input("Inserisci il titolo: ")
             autore = input("Inserisci l'autore: ")
             pagine = input("Inserisci il numero di pagine: ")
-            libri.append(Libro(titolo, autore, pagine))
+            libro = Libro(titolo, autore, pagine)          #creo oggetto di tipo Libro con input utente
+            self.libri.append(libro)                       #aggiungo il libro alla lista libri
+            print("Il libro", libro.titolo, "è stato aggiunto alla biblioteca")
+            
 
 
 biblio1 = Biblioteca()                  #creo oggetto della classe Biblioteca
-biblio1.crea_libro()                    #chiamo il metodo crea libro
-
+biblio1.crea_libro()                    #chiamo il metodo crea_libro
+print("Nella biblioteca ci sono", len(biblio1.libri), "libri")
         
