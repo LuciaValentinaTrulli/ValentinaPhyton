@@ -9,48 +9,84 @@ class Prodotto:                                                             #def
         profitto = self.prezzo_vendita - self.costo_produzione
         return profitto
 
-class Elettronica:                                                                    #definisco la classe Elettronica
+class Elettronica(Prodotto):                                                          #definisco la classe derivata Elettronica
     def __init__ (self, nome, costo_produzione, prezzo_vendita, garanzia):            #costruttore della classe Elettronica
-        super().__init__(self, nome, costo_produzione, prezzo_vendita)
+        Prodotto.__init__ (self, nome, costo_produzione, prezzo_vendita)
         self.garanzia = garanzia
 
 
-class Abbigliamento:                                                                   #definisco la classe Abbigliamento
+class Abbigliamento(Prodotto):                                                         #definisco la classe derivata Abbigliamento
     def __init__ (self, nome, costo_produzione, prezzo_vendita, materiale):            #costruttore della classe Abbigliamento
-        super().__init__(self, nome, costo_produzione, prezzo_vendita)
+        Prodotto.__init__ (self, nome, costo_produzione, prezzo_vendita)
         self.materiale = materiale
 
 
 class Fabbrica:                                                                         #definisco la classe Fabbrica
-    inventario ={}                                                                      #attributo della classe
+    inventario ={}
+    prodotti = []                                                                      #attributo della classe
 
     def aggiungi_prodotto(self):
         while True:
-            prodotto = input("Inserisci un prodotto:")
-            quantità = input("Inserisci la quantità: ")
-            self.inventario[prodotto] = quantità
+            nome = input("Inserisci il nome del prodotto:")
+            costo_produzione = int(input("Inserisci il costo di produzione del prodotto:"))
+            prezzo_vendita = int(input("Inserisci il prezzo del prodotto:"))
+            prodotto = Prodotto(nome, costo_produzione, prezzo_vendita)  #creo oggetto Prodotto e lo aggiungo alla lista prodotti
+            self.prodotti.append(prodotto)
+
+            quantità = int(input("Inserisci la quantità: "))
+            self.inventario[nome] = quantità                    #salvo prodotto e quantità nel dizionario
+            print(f"L'articolo {nome} è stato aggiunto all'inventario")
 
             scelta = input("Vuoi inserire un altro prodotto? ")
             if scelta.lower() == "no":
                 break
 
     def vendi_prodotto(self):
-        fabbrica = Fabbrica()
-        prod_venduto = input("Inserisci il nome del prodotto venduto: ")
-        for prodotto in fabbrica.inventario:
-            if fabbrica.inventario.keys() == prodotto:
-                fabbrica.inventario["prod_venduto"] = fabbrica.inventario.quantità - 1
-                prodotto.calcola_profitto
-                print()
+        nome_prod_venduto = input("Inserisci il nome del prodotto venduto: ")
+        for chiave in self.inventario.keys():
+            if chiave == nome_prod_venduto:
+                self.inventario[nome_prod_venduto] -= 1                  #diminuisco di uno la quantità disponibile del prodotto
+                print(f"Un articolo {nome_prod_venduto} tolto dall'inventario")
+
+                for prodotto in self.prodotti:                             #cerco il prodotto nella lista prodotti e stampo il profitto relativo
+                    if prodotto.nome == nome_prod_venduto:
+                        print(f"Il profitto realizzato con questa vendita è: {prodotto.calcola_profitto()} euro")
+       
+        if nome_prod_venduto not in self.inventario.keys(): 
+            print("Prodotto non trovato")
+
+    def resi_prodotto(self):
+        nome_prod_reso = input("Inserisci il nome del prodotto reso: ")
+        for chiave in self.inventario.keys():
+            if chiave == nome_prod_reso:
+                self.inventario[nome_prod_reso] += 1                  #aumento di uno la quantità disponibile del prodotto
+                print(f"Un articolo {nome_prod_reso} aggiunto all'inventario")
+    
+        if nome_prod_reso not in self.inventario.keys():
+            print("Articolo non presente in inventario, è necessario aggiungerlo.")
+
+            costo_produzione = int(input("Inserisci il costo di produzione del prodotto:"))
+            prezzo_vendita = int(input("Inserisci il prezzo del prodotto:"))
+            prodotto = Prodotto(nome_prod_reso, costo_produzione, prezzo_vendita)  #creo oggetto Prodotto e lo aggiungo alla lista prodotti
+            self.prodotti.append(prodotto)
+
+            self.inventario[nome_prod_reso] = 1                             #aggiungo l'articolo nell'inventario
+            print (f"Un articolo {nome_prod_reso} aggiunto all'inventario")      
 
 
 
 
+#testo funzionamento classe derivata (funziona)
+elettronica1 = Elettronica("cellulare", 200, 400, 2)
+print("Il profitto relativo all'articolo", elettronica1.nome, "è:", elettronica1.calcola_profitto(), "euro")
+print("La garanzia è di", elettronica1.garanzia, "anni")
 
-
-#creazione oggetti e chiamata metodi
-prodotto1 = Prodotto("telefono", 200, 400)
-print(prodotto1.nome)
-elettronica1 = Elettronica(prodotto1, 2)
-print(elettronica1.nome)
-print (elettronica1.garanzia)
+#testo funzionamento classe Fabbrica(funziona)
+fabbrica = Fabbrica()
+fabbrica.aggiungi_prodotto()
+print("Ecco gli articoli disponibili e le loro quantità:", fabbrica.inventario)
+fabbrica.vendi_prodotto()
+print("Ecco gli articoli disponibili e le loro quantità:", fabbrica.inventario)
+fabbrica.resi_prodotto()
+print("Ecco gli articoli disponibili e le loro quantità:", fabbrica.inventario)
+print(len(fabbrica.prodotti))
