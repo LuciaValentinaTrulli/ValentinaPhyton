@@ -7,16 +7,44 @@ Stampa la forma dell'array. """
 
 import numpy as np
 
-#creo array
-arr = np.arange(10, 50)
-print (arr)
+def menu():
+    print("1. Crea un array")
+    print("2. Verifica il tipo di dato dell'array")
+    print("3. Modifica il tipo di dato dell'array")
+    print("4. Verifica la forma dell'array")
+    print("0. Esci")
 
-#stampo tipo di dato
-print("Tipo di dati", arr.dtype)
 
-#cambio tipo di dato
-arr = np.array(arr, dtype='int32')
-print("Tipo di dati", arr.dtype)
+while True:
+    menu()
+    scelta=input("Inserisci scelta: ")
+    if scelta=="1":
 
-#stampo al forma dell'array
-print("Forma", arr.shape)
+        #creo array
+        arr = np.arange(10, 50)
+        print("Array creato")
+        print (arr)  
+
+    elif scelta=="2":
+
+        #stampo tipo di dato
+        print("Tipo di dati", arr.dtype)
+
+    elif scelta=="3":
+
+        #cambio tipo di dato
+        arr = np.array(arr, dtype='int32')
+        print("Tipo di dati", arr.dtype)
+
+    elif scelta=="4":
+
+        #stampo al forma dell'array
+        print("Forma", arr.shape)
+
+    elif scelta=="0":
+
+        break
+
+    else:
+        
+        print("Scelta sbagliata")
