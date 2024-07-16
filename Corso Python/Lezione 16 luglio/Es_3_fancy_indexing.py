@@ -21,7 +21,7 @@ def seleziono_righe(arr_random):
     print("\nSeleziono righe:")
     print(arr_random[indici])
     return arr_random[indici]
-1
+
 #metodo alternativo
 """ def seleziono_righe(arr_random):
     #fancy indexing per selezionare e stampare righe agli indici (0, 1), (1, 3), (2, 2) e (3, 0)
