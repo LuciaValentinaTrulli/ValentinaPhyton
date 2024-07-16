@@ -25,7 +25,7 @@ def media(arr_random):
 
 
 
-#riciamo le funzioni
+#richiamo le funzioni
 arr_random =crea_arr_casuale()
 somma(arr_random)
 media(arr_random)
