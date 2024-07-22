@@ -68,7 +68,6 @@ def visualizza_dati(df, media_mensile):
 
 def menu():
     df = None
-    media_mensile = None
     
     while True:
         print("\nMenu:")
